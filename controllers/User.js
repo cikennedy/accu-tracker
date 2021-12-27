@@ -8,6 +8,7 @@ class User extends Model {
   }
 }
 
+// create model including basic sign in features for healthare providers 
 User.init(
   {
     id: {

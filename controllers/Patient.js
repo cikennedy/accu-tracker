@@ -2,10 +2,11 @@
 const { Model, DataTypes } = require('sequelize');
 const sequelize = require('../config/connection');
 
-// create post model 
+// create patient model 
 class Patient extends Model {}
 
-
+// Include patient information such as first name, last name, birthday, medical history, height,
+// weight, start date, (more to be added)
 Patient.init(
     {
         id: {
