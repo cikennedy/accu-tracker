@@ -1,27 +1,11 @@
-const User = require('./User');
-const Patient = require('./Patient');
-const Update = require('./Update');
+const router = require('express').Router();
 
-User.hasMany(Patient, {
-    foreignKey: 'user_id',
-    onDelete: 'CASCADE'
-});
+const apiRoutes = require('./api');
+const homeRoutes = require('./homeRoutes');
+const dashboardRoutes = require('./dashboardRoutes');
 
-Patient.hasMany(Update, {
-    foreignKey: 'post_id',
-    onDelete: 'CASCADE',
-});
+router.use('/', homeRoutes);
+router.use('/dashboard', dashboardRoutes);
+router.use('/api', apiRoutes);
 
-Patient.belongsTo(User, {
-    foreignKey: 'user_id',
-});
-
-Update.belongsTo(User, {
-    foreignKey: 'user_id',
-});
-
-module.exports = {
-    User,
-    Patient,
-    Update,
-};
+module.exports = router;
