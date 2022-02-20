@@ -1,1 +1,11 @@
 /* styling */
+.signin-btn {
+    background-color: darkslategray;
+    color: white;
+    border-radius: 20%;
+}
+
+div {
+    padding-top: 10px;
+};
+
