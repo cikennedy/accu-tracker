@@ -1,47 +1,59 @@
-const { Model, DataTypes } = require('sequelize');
-const sequelize = require('../config/connection');
+const { Model, DataTypes } = require("sequelize");
+const sequelize = require("../config/connection");
 
 class Update extends Model {}
 
 // Create columns and datatypes for patient updates on visits. This will include the appointment date,
 //  dosage administered, follow up date, and notes on the visit
 Update.init(
-    {
+  {
     id: {
-        type: DataTypes.INTEGER,
-        primaryKey: true,
-        autoIncrement: true,
+      type: DataTypes.INTEGER,
+      primaryKey: true,
+      autoIncrement: true,
     },
     appointment_date: {
-        type: DataTypes.STRING,
-        allowNull: false,
+      type: DataTypes.STRING,
+      allowNull: false,
     },
-    dosage: {
-        type: DataTypes.INTEGER,
-        allowNull: false,
+    cumulative_dosage: {
+      type: DataTypes.INTEGER,
+      allowNull: false,
+    },
+    dosage_update: {
+      type: DataTypes.INTEGER,
+      allowNull: false,
+    },
+    height: {
+      type: DataTypes.STRING,
+      allowNull: false,
+    },
+    weight: {
+      type: DataTypes.INTEGER,
+      allowNull: false,
     },
     followup_date: {
-        type: DataTypes.STRING,
-        allowNull: false,
+      type: DataTypes.STRING,
+      allowNull: false,
     },
     notes: {
-        type: DataTypes.TEXT,
-        allowNull: false,
+      type: DataTypes.TEXT,
+      allowNull: false,
     },
     patient_id: {
-        type: DataTypes.INTEGER,
-        references: {
-          model: 'patient',
-          key: 'id'
-        },
+      type: DataTypes.INTEGER,
+      references: {
+        model: "patient",
+        key: "id",
+      },
     },
-    },
-    {
+  },
+  {
     sequelize,
     freezeTableName: true,
     underscored: true,
-    modelName: 'update'
-    }
-  );
+    modelName: "update",
+  }
+);
 
 module.exports = Update;
